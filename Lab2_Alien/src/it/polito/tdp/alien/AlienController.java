@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 
 public class AlienController {
 	
+	Dizionario d = new Dizionario();
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -43,13 +44,32 @@ public class AlienController {
     
     @FXML
     void doTranslate(ActionEvent event) {
-    	    	
+    	String ar[]=txtWord.getText().split(" ");
+    	if(ar.length==1){
+    		String traduzione=d.traduci(ar[0]);
+    		txtResult.setText(traduzione);
+    		}
+    	else if(ar.length==2){
+    		String s= d.salvaParola(ar[0], ar[1]);
+    		txtResult.setText(s);
+    		
+    	}
+    	makeGUIvisible(true);
+    	txtWord.clear();;
     }
     
     
-    @FXML
-    void doReset(ActionEvent event) {
+    private void makeGUIvisible(boolean b) {
+		txtResult.setVisible(b);
+		btnReset.setVisible(b);
+		
+	}
 
+
+	@FXML
+    void doReset(ActionEvent event) {
+    	txtResult.clear();
+    	makeGUIvisible(false);
     }
     
 }
