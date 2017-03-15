@@ -59,6 +59,8 @@ public class AlienController {
     }
     
     
+    //push
+    
     private void makeGUIvisible(boolean b) {
 		txtResult.setVisible(b);
 		btnReset.setVisible(b);
